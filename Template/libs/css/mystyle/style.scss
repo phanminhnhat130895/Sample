@@ -1,0 +1,9 @@
+$bgColor: #34ebe5;
+$mainWidth: 100%;
+$mainHeight: 500px;
+
+.main{
+    background-color: $bgColor;
+    width: $mainWidth;
+    height: $mainHeight;
+}
