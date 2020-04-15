@@ -1,0 +1,1 @@
+[ERROR LOG] 2020-04-10 11:31:57: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''Member',1,'member@gmail.com','1995/01/01','Biên Hòa, Đồng Nai','2020-04-10' at line 1

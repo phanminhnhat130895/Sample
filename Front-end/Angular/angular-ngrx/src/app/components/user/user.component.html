@@ -1,0 +1,44 @@
+<h1>User Component</h1>
+<div>
+    <div>
+        <label>Username: </label>
+        <input type="text" [(ngModel)]="user.USERNAME" />
+    </div>
+    <div>
+        <label>Password: </label>
+        <input type="password" [(ngModel)]="user.PASSWORD" />
+    </div>
+    <div>
+        <label>Role: </label>
+        <select [(ngModel)]="user.ROLE">
+            <option value="Super Admin">Super Admin</option>
+            <option value="Admin">Admin</option>
+            <option value="Member">Member</option>
+            <option value="Guest">Guest</option>
+        </select>
+    </div>
+    <div>
+        <label>Active: </label>
+        <select [(ngModel)]="user.ACTIVE">
+            <option value="0">Inactive</option>
+            <option value="1">Active</option>
+        </select>
+    </div>
+    <div>
+        <label>Email: </label>
+        <input type="text" [(ngModel)]="user.EMAIL" />
+    </div>
+    <div>
+        <label>DOB: </label>
+        <input type="text" [(ngModel)]="user.DAYOFBIRTH" />
+    </div>
+    <div>
+        <label>Address: </label>
+        <textarea [(ngModel)]="user.ADDRESS"></textarea>
+    </div>
+    <div>
+        <button (click)="onRegisterUser()">Register</button>
+    </div>
+</div>
+
+<button (click)="onShowToken()">Show Token</button>
