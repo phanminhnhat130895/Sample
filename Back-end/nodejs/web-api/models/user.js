@@ -1,5 +1,9 @@
-class User{
+var Base = require('./base');
+
+class User extends Base {
     constructor(){
+        super();
+        
         this.USERID = '';
         this.USERNAME = '';
         this.PASSWORD = '';
@@ -9,9 +13,6 @@ class User{
         this.EMAIL = '';
         this.DAYOFBIRTH = '';
         this.ADDRESS = '';
-        this.CREATEDATE = '';
-        this.UPDATEDATE = '';
-        this.DELETEDATE = '';
     }
 
     parseObject(data){
@@ -19,4 +20,4 @@ class User{
     }
 }
 
-module.exports = User
+module.exports = User;

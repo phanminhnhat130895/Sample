@@ -12,13 +12,12 @@ class UserService{
             let result = 1;
             let salt = bcrypt.genSaltSync(saltRounds);
             let hash = bcrypt.hashSync(user.PASSWORD, salt);
-            let store = execute.Execute.GenerateStore(9, 'SP_REGISTER_USER');
+            let store = execute.Execute.GenerateStore(10, 'SP_REGISTER_USER');
             user.USERID = uuid.v4();
-            user.ACTIVE = 1;
             user.PASSWORD = hash;
             user.CREATEDATE = new Date();
             let params = [user.USERID, user.USERNAME, user.PASSWORD, user.ROLE, user.ACTIVE,
-                          user.EMAIL, user.DAYOFBIRTH, user.ADDRESS, user.CREATEDATE];
+                          user.EMAIL, user.DAYOFBIRTH, user.ADDRESS, user.CREATEDATE, user.CUDID];
     
             await execute.Execute.CallStore(store, params)
                 .then(res => {
