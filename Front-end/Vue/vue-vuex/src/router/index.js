@@ -1,14 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import LoginComponent from '../components/login/login.vue'
+import MainComponent from '../components/main/main.vue'
+import UserComponent from '../components/user/user.vue'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Login',
+    component: LoginComponent
+    // name: 'Home',
+    // component: Home
+  },
+  {
+    path: '/main',
+    name: 'Main',
+    component: MainComponent,
+    children: [
+      { path: 'user', component: UserComponent, meta: { authorization: ['Super Admin', 'Admin'] } }
+    ]
   },
   {
     path: '/about',

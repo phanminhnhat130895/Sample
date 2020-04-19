@@ -1,8 +1,10 @@
-export class User extends Base {
+import { Base } from "./base";
+
+export default class User extends Base {
     constructor(){
         super();
-        
-        this.USERID = '';
+
+        this.USERID = '',
         this.USERNAME = '';
         this.PASSWORD = '';
         this.ROLE = '';

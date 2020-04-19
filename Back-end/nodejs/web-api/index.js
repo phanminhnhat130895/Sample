@@ -12,7 +12,7 @@ app.use(express.static('libs'));
 app.use(express.static('private'));
 
 // config cors
-var whiteList = ["http://localhost:4200", "http://localhost:3000", "http://localhost:3001"];
+var whiteList = ["http://localhost:4200", "http://localhost:3000", "http://localhost:3001", "http://localhost:8080"];
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (whiteList.includes(req.header('Origin'))) {

@@ -1,0 +1,18 @@
+<div>
+    <h1>Main Component</h1>
+    <h3 class="message">{{ message }}</h3>
+    <!-- <SubMain v-bind:data="message"></SubMain> -->
+    <ul>
+        <li>
+            <router-link to="/">Back</router-link>
+        </li>
+        <li>
+            <router-link to="/user">To User</router-link>
+        </li>
+        <li>
+            <router-link to="/chat">To Chat</router-link>
+        </li>
+    </ul>
+    <router-view />
+    <!-- <p>Another state: {{ anotherState }}</p> -->
+</div>
