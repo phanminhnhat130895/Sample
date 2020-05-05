@@ -686,23 +686,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\phanm\\.nuget\\packages\\": {},
+    "C:\\Users\\valor-003\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\WebBase.Models.csproj",
+      "projectUniqueName": "D:\\Research\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\WebBase.Models.csproj",
       "projectName": "WebBase.Models",
-      "projectPath": "D:\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\WebBase.Models.csproj",
-      "packagesPath": "C:\\Users\\phanm\\.nuget\\packages\\",
-      "outputPath": "D:\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\obj\\",
+      "projectPath": "D:\\Research\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\WebBase.Models.csproj",
+      "packagesPath": "C:\\Users\\valor-003\\.nuget\\packages\\",
+      "outputPath": "D:\\Research\\Sample\\Back-end\\dotnet\\WebBase.API\\WebBase.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\phanm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\valor-003\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

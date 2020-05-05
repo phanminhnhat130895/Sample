@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import { Provider } from 'react-redux';
 import store from './state-redux/store';
 
+import { ShareService } from './services/share.service';
+
 import LoginComponent from './components/login.component';
 import MainComponent from './components/main.component';
+import AuthorizationComponent from './components/authorization.component';
+
+const AuthenticateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => ShareService.isAuthenticate() ? (<Component {...props} />) : (<Redirect to={{ pathname: '/' }}/>)}/>
+);
+
+const AuthorizationRoute = ({ component: Component, roles, ...rest }) => (
+    <Route {...rest} render={props => ShareService.isAuthorization(roles) ? (<Component {...props} />) : (<Redirect to={{ pathname: '/' }}/>)}/>
+);
 
 class AppRoute extends Component {
     render(){
@@ -16,7 +27,9 @@ class AppRoute extends Component {
                 <Router history={history}>
                     <Switch>
                         <Route exact path='/' component={LoginComponent}></Route>
-                        <Route path='/main' component={MainComponent}></Route>
+                        {/* <Route path='/main' component={MainComponent}></Route> */}
+                        <AuthenticateRoute path='/main' component={MainComponent}></AuthenticateRoute>
+                        <AuthorizationRoute path='/authorization' roles={['Member']} component={AuthorizationComponent}></AuthorizationRoute>
                     </Switch>
                 </Router>
             </Provider>

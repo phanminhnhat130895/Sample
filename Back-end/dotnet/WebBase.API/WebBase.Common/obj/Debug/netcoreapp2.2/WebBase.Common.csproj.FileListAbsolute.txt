@@ -1,0 +1,12 @@
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\bin\Debug\netcoreapp2.2\WebBase.Common.deps.json
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\bin\Debug\netcoreapp2.2\WebBase.Common.dll
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\bin\Debug\netcoreapp2.2\WebBase.Common.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\bin\Debug\netcoreapp2.2\Microsoft.Extensions.Configuration.Abstractions.xml
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.csprojAssemblyReference.cache
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.csproj.CoreCompileInputs.cache
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.AssemblyInfoInputs.cache
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.AssemblyInfo.cs
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.csproj.CopyComplete
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.dll
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Common\obj\Debug\netcoreapp2.2\WebBase.Common.pdb
