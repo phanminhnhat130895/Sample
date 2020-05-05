@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setJwtToken } from '../state-redux/actions/auth.action';
 import ShareService from '../services/share.service';
-import { withRouter } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import UserComponent from './user.component';
+import Error404Component from './404.component';
 
 class MainComponent extends Component {
     constructor(props){
@@ -25,6 +27,10 @@ class MainComponent extends Component {
             <div>
                 <h3>Main Component</h3>
                 <button onClick={this.onShowToken}>Show</button>
+                <Switch>
+                    <Route path='/main/user' component={UserComponent}></Route>
+                    <Route component={Error404Component}></Route>
+                </Switch>
             </div>
         )
     }
@@ -38,4 +44,4 @@ function mapActionToProps(){
     return { setJwtToken }
 }
 
-export default connect(mapStateToProps, mapActionToProps())(withRouter(MainComponent));
+export default connect(mapStateToProps, mapActionToProps())(MainComponent);

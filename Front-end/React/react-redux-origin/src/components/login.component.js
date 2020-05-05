@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import UserService from '../services/user.service';
 import ShareService from '../services/share.service';
-import { withRouter } from 'react-router-dom';
 
 class LoginComponent extends Component {
     constructor(props){
@@ -56,4 +55,4 @@ class LoginComponent extends Component {
     }
 }
 
-export default withRouter(LoginComponent);
+export default LoginComponent;

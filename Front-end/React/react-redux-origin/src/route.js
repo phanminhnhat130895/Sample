@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 
 import LoginComponent from './components/login.component';
 import MainComponent from './components/main.component';
-import UserComponent from './components/user.component';
-import Error404Component from './components/404.component';
 
 import ShareService from './services/share.service';
 
@@ -23,25 +21,14 @@ class AppRoute extends Component {
     render(){
         const history = createBrowserHistory();
         return(
-            <Router history={history}>
-                <Switch>
-                    <Route exact path='/' component={LoginComponent}></Route>
-                    <Provider store={store}>
-                        <MainComponent>
-                            {/* <Route component={({ match }) => 
-                                <div>
-                                    <Route path='/user' component={UserComponent}></Route>
-                                    <Route component={Error404Component}></Route>
-                                </div>
-                            } /> */}
-                        </MainComponent>
-                        <Switch>
-                            <Route path='/user' component={UserComponent}></Route>
-                            <Route component={Error404Component}></Route>
-                        </Switch>
-                    </Provider>
-                </Switch>
-            </Router>
+            <Provider store={store}>
+                <Router history={history}>
+                    <Switch>
+                        <Route exact path='/' component={LoginComponent}></Route>
+                        <Route path='/main' component={MainComponent}></Route>
+                    </Switch>
+                </Router>
+            </Provider>
         )
     }
 }

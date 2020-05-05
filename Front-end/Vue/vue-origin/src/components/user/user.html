@@ -1,0 +1,42 @@
+<div>
+    <h3>User Component</h3>
+    <div>
+        <label>USERNAME</label>
+        <input type='text' name='username' v-model='user.USERNAME' />
+    </div>
+    <div>
+        <label>PASSWORD</label>
+        <input type='password' name='password' v-model='user.PASSWORD' />
+    </div>
+    <div>
+        <label>ROLE</label>
+        <select name='role' v-model='user.ROLE'>
+            <option value='Super Admin'>Super Admin</option>
+            <option value='Admin'>Admin</option>
+            <option value='Member'>Member</option>
+            <option value='Guest'>Guest</option>
+        </select>
+    </div>
+    <div>
+        <label>ACTIVE</label>
+        <select name='active' v-model='user.ACTIVE'>
+            <option value='0'>Inactive</option>
+            <option value='1'>Active</option>
+        </select>
+    </div>
+    <div>
+        <label>EMAIL</label>
+        <input type='text' name='email' v-model='user.EMAIL' />
+    </div>
+    <div>
+        <label>DAYOFBIRTH</label>
+        <input type='date' name='dob' v-model='user.DAYOFBIRTH' />
+    </div>
+    <div>
+        <label>ADDRESS</label>
+        <textarea name='address' v-model='user.ADDRESS'></textarea>
+    </div>
+    <div>
+        <button v-on:click='onRegister'>Register</button>
+    </div>
+</div>
