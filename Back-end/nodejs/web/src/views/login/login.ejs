@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <base href="http://localhost:3000" />
+        <script type="text/javascript" src="jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+                
+            })
+        </script>
+        <script>
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Login Page</h1>
+        <% if (message) { %>
+            <p><%= message %></p>
+        <% } %>
+        <form method="POST" action="get-login">
+            <label>Username: </label>
+            <input type="text" name="username" />
+            <label>Password: </label>
+            <input type="password" name="password" />
+            <button>Login</button>
+        </form>
+    </body>
+</html>

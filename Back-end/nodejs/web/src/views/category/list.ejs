@@ -1,0 +1,23 @@
+<% layout('../index') -%>
+<h1>List Posts</h1>
+<% if (message) { %>
+    <p><%= message %></p>
+<% } %>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>SLUG</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(i => { %>
+            <tr>
+                <td><%= i.idcategory %></td>
+                <td><%= i.name %></td>
+                <td><%= i.slug %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
