@@ -14,7 +14,7 @@ namespace WebBase.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { @"[{""idcategory"":""080f5be1-85a7-416f-ae64-dbdfc64f499c"",""name"":""Ram PC"",""slug"":""ram-pc"",""status"":1,""createat"":""2020-05-06T00:00:00"",""updateat"":null,""deleteat"":null,""cudid"":""0"",""Products"":[{""idproduct"":""22c3e677-7e05-4968-9240-df28498e95ab"",""idcategory"":""080f5be1-85a7-416f-ae64-dbdfc64f499c"",""name"":""Ram 8GB DDR4"",""slug"":""ram-8gb-ddr4"",""status"":1,""createat"":""2020-05-06T00:00:00"",""updateat"":null,""deleteat"":null,""cudid"":""0""value1", "value2" };
         }
 
         // GET api/values/5

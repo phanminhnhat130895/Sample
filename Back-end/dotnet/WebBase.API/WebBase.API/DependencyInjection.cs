@@ -19,6 +19,12 @@ namespace WebBase.API
 
             services.AddTransient<IRepository<User>, Repository<User>>();
             services.AddTransient<IUserService, UserService>();
+
+            services.AddTransient<IRepository<Category>, Repository<Category>>();
+            services.AddTransient<ICategoryService, CategoryService>();
+
+            services.AddTransient<IRepository<Product>, Repository<Product>>();
+            services.AddTransient<IProductService, ProductService>();
         }
     }
 }

@@ -11,5 +11,9 @@ namespace WebBase.Repositories
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public virtual DbSet<User> User { get; set; }
+
+        public virtual DbSet<Category> Category { get; set; }
+
+        public virtual DbSet<Product> Product { get; set; }
     }
 }
