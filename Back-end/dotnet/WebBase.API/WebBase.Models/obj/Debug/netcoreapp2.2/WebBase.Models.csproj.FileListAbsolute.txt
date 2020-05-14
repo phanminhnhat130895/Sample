@@ -1,9 +1,0 @@
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\bin\Debug\netcoreapp2.2\WebBase.Models.deps.json
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\bin\Debug\netcoreapp2.2\WebBase.Models.dll
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\bin\Debug\netcoreapp2.2\WebBase.Models.pdb
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.csprojAssemblyReference.cache
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.csproj.CoreCompileInputs.cache
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.AssemblyInfoInputs.cache
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.AssemblyInfo.cs
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.dll
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Models\obj\Debug\netcoreapp2.2\WebBase.Models.pdb
