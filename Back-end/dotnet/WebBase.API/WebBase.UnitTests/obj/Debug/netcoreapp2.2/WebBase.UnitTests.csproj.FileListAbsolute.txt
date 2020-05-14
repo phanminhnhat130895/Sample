@@ -21,3 +21,4 @@ D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.UnitTests\bin\Debug\netco
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.UnitTests\obj\Debug\netcoreapp2.2\WebBase.UnitTests.csproj.CopyComplete
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.UnitTests\obj\Debug\netcoreapp2.2\WebBase.UnitTests.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.UnitTests\obj\Debug\netcoreapp2.2\WebBase.UnitTests.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.UnitTests\obj\Debug\netcoreapp2.2\WebBase.UnitTests.genruntimeconfig.cache

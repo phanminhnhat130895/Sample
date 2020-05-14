@@ -1,6 +1,5 @@
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\bin\Debug\netcoreapp2.2\WebBase.Models.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.csprojAssemblyReference.cache
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.csproj.CoreCompileInputs.cache
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.AssemblyInfoInputs.cache
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.AssemblyInfo.cs
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\bin\Debug\netcoreapp2.2\WebBase.Repositories.deps.json
@@ -10,3 +9,4 @@ D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\bin\Debug\ne
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.csproj.CopyComplete
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.Repositories\obj\Debug\netcoreapp2.2\WebBase.Repositories.csproj.CoreCompileInputs.cache

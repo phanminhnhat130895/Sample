@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.API", "WebBase.API\WebBase.API.csproj", "{0C2B2179-698A-4DCD-AA62-4F308F8D84F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.API", "WebBase.API\WebBase.API.csproj", "{0C2B2179-698A-4DCD-AA62-4F308F8D84F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.Models", "WebBase.Models\WebBase.Models.csproj", "{C975E698-B945-4A51-BC80-EEB7D149C2C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.Models", "WebBase.Models\WebBase.Models.csproj", "{C975E698-B945-4A51-BC80-EEB7D149C2C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.Repositories", "WebBase.Repositories\WebBase.Repositories.csproj", "{129CD5E3-8D93-40B9-8A97-F2746BC01398}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.Repositories", "WebBase.Repositories\WebBase.Repositories.csproj", "{129CD5E3-8D93-40B9-8A97-F2746BC01398}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.Services", "WebBase.Services\WebBase.Services.csproj", "{31FE6C00-E531-49B3-BA0D-730CF0677F8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.Services", "WebBase.Services\WebBase.Services.csproj", "{31FE6C00-E531-49B3-BA0D-730CF0677F8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.Common", "WebBase.Common\WebBase.Common.csproj", "{0D334792-9F9A-4B13-AF93-5CB923152CA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.Common", "WebBase.Common\WebBase.Common.csproj", "{0D334792-9F9A-4B13-AF93-5CB923152CA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.UnitTests", "WebBase.UnitTests\WebBase.UnitTests.csproj", "{7AFA3ABD-0128-4335-99FE-5867221450F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebBase.UnitTests", "WebBase.UnitTests\WebBase.UnitTests.csproj", "{7AFA3ABD-0128-4335-99FE-5867221450F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBase.Security", "WebBase.Security\WebBase.Security.csproj", "{24D08334-3FE0-4D8E-8A4B-24A03A62515B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7AFA3ABD-0128-4335-99FE-5867221450F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AFA3ABD-0128-4335-99FE-5867221450F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AFA3ABD-0128-4335-99FE-5867221450F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D08334-3FE0-4D8E-8A4B-24A03A62515B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D08334-3FE0-4D8E-8A4B-24A03A62515B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D08334-3FE0-4D8E-8A4B-24A03A62515B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D08334-3FE0-4D8E-8A4B-24A03A62515B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,6 @@ D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Repositories.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Services.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.csprojAssemblyReference.cache
-D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.csproj.CoreCompileInputs.cache
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.RazorAssemblyInfo.cache
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.RazorAssemblyInfo.cs
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.AssemblyInfoInputs.cache
@@ -20,3 +19,12 @@ D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.csproj.CopyComplete
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.dll
 D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Common.dll
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Common.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\appsettings.Development.json
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\appsettings.json
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.genruntimeconfig.cache
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Security.dll
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\bin\Debug\netcoreapp2.2\WebBase.Security.pdb
+D:\Research\Sample\Back-end\dotnet\WebBase.API\WebBase.API\obj\Debug\netcoreapp2.2\WebBase.API.csproj.CoreCompileInputs.cache

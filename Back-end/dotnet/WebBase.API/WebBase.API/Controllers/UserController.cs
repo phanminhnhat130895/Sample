@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using WebBase.Common;
+using WebBase.Models;
+using WebBase.Security;
 using WebBase.Services.Interfaces;
 using WebBase.Services.ViewModels;
 
@@ -21,12 +24,15 @@ namespace WebBase.API.Controllers
     {
         private IUserService _userService;
         private IConfiguration _config;
+        private IJwtHandler _jwtHandler;
 
         public UserController(IUserService userService,
-            IConfiguration config)
+            IConfiguration config,
+            IJwtHandler jwtHandler)
         {
             _userService = userService;
             _config = config;
+            _jwtHandler = jwtHandler;
         }
 
         [AllowAnonymous]
@@ -38,11 +44,38 @@ namespace WebBase.API.Controllers
             return "Unauthenticate";
         }
 
+        [AllowAnonymous]
+        [HttpPost, Route("get-login-custom")]
+        public string OnLoginCustom(UserViewModel userVM)
+        {
+            var user = _userService.OnLogin(userVM);
+            if (user != null) return _jwtHandler.Create(user);
+            return "Unauthenticate";
+        }
+
         [Authorize]
         [HttpPost, Route("register-user")]
         public int RegisterUser(UserViewModel userVM)
         {
             return _userService.RegisterUser(userVM);
+        }
+
+        [HttpGet, Route("get-all")]
+        public List<User> getAll()
+        {
+            return _userService.getAllUserThroughContext();
+        }
+
+        [HttpGet, Route("dapper-user")]
+        public List<User> getAllUserDapper()
+        {
+            return _userService.getAllUserWithDapper();
+        }
+
+        [HttpGet, Route("dapper-user-param")]
+        public List<User> getAllUserDapperParam()
+        {
+            return _userService.getAllUserWithDapperWithParam();
         }
 
         #region private function
@@ -53,11 +86,11 @@ namespace WebBase.API.Controllers
 
             var claims = new[]
             {
-                new Claim("USERID", userVM.USERID),
-                new Claim("USERNAME", userVM.USERNAME),
-                new Claim("ROLE", userVM.ROLE),
-                new Claim("EMAIL", userVM.EMAIL),
-                new Claim("ADDRESS", userVM.ADDRESS)
+                new Claim(ClaimType.USERID, userVM.userid),
+                new Claim(ClaimType.USERNAME, userVM.username),
+                new Claim(ClaimType.ROLE, userVM.role),
+                new Claim(ClaimType.EMAIL, userVM.email),
+                new Claim(ClaimType.ADDRESS, userVM.address)
             };
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Issuer"], claims, expires: DateTime.Now.AddHours(8), signingCredentials: creds);

@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebBase.API.CustomAttribute;
+using WebBase.Common;
+using WebBase.Security;
 
 namespace WebBase.API.Controllers
 {
@@ -10,18 +14,35 @@ namespace WebBase.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IJwtHandler _jwtHandler;
+
+        public ValuesController(IJwtHandler jwtHandler)
+        {
+            _jwtHandler = jwtHandler;
+        }
+
         // GET api/values
+        //[PermissionClaim(ClaimType.ROLE, "Admin")]
+        [Authorize]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { @"[{""idcategory"":""080f5be1-85a7-416f-ae64-dbdfc64f499c"",""name"":""Ram PC"",""slug"":""ram-pc"",""status"":1,""createat"":""2020-05-06T00:00:00"",""updateat"":null,""deleteat"":null,""cudid"":""0"",""Products"":[{""idproduct"":""22c3e677-7e05-4968-9240-df28498e95ab"",""idcategory"":""080f5be1-85a7-416f-ae64-dbdfc64f499c"",""name"":""Ram 8GB DDR4"",""slug"":""ram-8gb-ddr4"",""status"":1,""createat"":""2020-05-06T00:00:00"",""updateat"":null,""deleteat"":null,""cudid"":""0""value1", "value2" };
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
+        [Permission("Admin")]
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
             return "value";
+        }
+
+        [PermissionArray(role: new string[] { "Admin", "Member" })]
+        [HttpGet("get-with-permission")]
+        public ActionResult<string> GetWithPermission()
+        {
+            return "You have permission";
         }
 
         // POST api/values

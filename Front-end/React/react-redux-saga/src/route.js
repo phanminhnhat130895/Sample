@@ -10,6 +10,7 @@ import { ShareService } from './services/share.service';
 import LoginComponent from './components/login.component';
 import MainComponent from './components/main.component';
 import AuthorizationComponent from './components/authorization.component';
+import UserComponent from './components/user.component';
 
 const AuthenticateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => ShareService.isAuthenticate() ? (<Component {...props} />) : (<Redirect to={{ pathname: '/' }}/>)}/>
@@ -27,6 +28,7 @@ class AppRoute extends Component {
                 <Router history={history}>
                     <Switch>
                         <Route exact path='/' component={LoginComponent}></Route>
+                        <Route path='/user' component={UserComponent}></Route>
                         {/* <Route path='/main' component={MainComponent}></Route> */}
                         <AuthenticateRoute path='/main' component={MainComponent}></AuthenticateRoute>
                         <AuthorizationRoute path='/authorization' roles={['Member']} component={AuthorizationComponent}></AuthorizationRoute>

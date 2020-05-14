@@ -9,6 +9,7 @@ using WebBase.Repositories.Infrastructure;
 using WebBase.Services.Implementations;
 using WebBase.Services.Interfaces;
 using WebBase.Services.ViewModels;
+using WebBase.UnitTests.Data;
 using Xunit;
 
 namespace WebBase.UnitTests
@@ -80,13 +81,15 @@ namespace WebBase.UnitTests
 
             _mockUserRepository.Setup(x => x.Remove(It.IsAny<User>()));
 
+            _mockUserRepository.Setup(x => x.DbSet).Returns(_context.Object.User);
+
             _mockLoggerFactory.Setup(m => m.CreateLogger("UserService")).Returns(_mockLogger.Object);
 
             _userService = new UserService(_mockUserRepository.Object,
                 _mockUnitOfWork.Object,
                 _mockLoggerFactory.Object
                 //_mockHostingEnvironment.Object
-                );
+            );
         }
 
         [Fact]
@@ -94,13 +97,13 @@ namespace WebBase.UnitTests
         {
             UserViewModel userVM = new UserViewModel()
             {
-                USERNAME = "Success",
-                REGISTERPASSWORD = "Success#123*",
-                ACTIVE = 1,
-                ROLE = "Admin",
-                EMAIL = "Success@gmail.com",
-                ADDRESS = "Biên Hòa, Đồng Nai",
-                DAYOFBIRTH = new DateTime(1995, 8, 13)
+                username = "Success",
+                password = "Success#123*",
+                status = 1,
+                role = "Admin",
+                email = "Success@gmail.com",
+                address = "Biên Hòa, Đồng Nai",
+                dayofbirth = new DateTime(1995, 8, 13)
             };
 
             var result = _userService.RegisterUser(userVM);
@@ -116,6 +119,16 @@ namespace WebBase.UnitTests
             var result = _userService.RegisterUser(null);
 
             Assert.Equal(-1, result);
+
+            Mapper.Reset();
+        }
+
+        [Fact]
+        public void GetAll_Success()
+        {
+            var result = _userService.getAllUserThroughContext();
+
+            Assert.Equal(4, result.Count);
 
             Mapper.Reset();
         }

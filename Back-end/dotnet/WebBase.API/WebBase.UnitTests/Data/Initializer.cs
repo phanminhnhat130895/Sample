@@ -20,72 +20,72 @@ namespace WebBase.UnitTests.Data
             {
                 new User()
                 {
-                    USERID = "1",
-                    USERNAME = "Admin",
-                    PASSWORD = "Admin",
-                    ACTIVE = 1,
-                    ROLE = "Admin",
-                    ADDRESS = "HCM",
-                    DAYOFBIRTH = new DateTime(1995, 1, 1),
-                    CREATEDATE = new DateTime(2020, 1, 5),
-                    UPDATEDATE = null,
-                    DELETEDATE = null,
-                    CUDID = "0"
+                    userid = "1",
+                    username = "Admin",
+                    password = "Admin",
+                    status = 1,
+                    role = "Admin",
+                    address = "HCM",
+                    dayofbirth = new DateTime(1995, 1, 1),
+                    createdate = new DateTime(2020, 1, 5),
+                    updatedate = null,
+                    deletedate = null,
+                    cudid = "0"
                 },
                 new User()
                 {
-                    USERID = "2",
-                    USERNAME = "User",
-                    PASSWORD = "User",
-                    ACTIVE = 1,
-                    ROLE = "User",
-                    ADDRESS = "HCM",
-                    DAYOFBIRTH = new DateTime(1995, 1, 1),
-                    CREATEDATE = new DateTime(2020, 1, 5),
-                    UPDATEDATE = null,
-                    DELETEDATE = null,
-                    CUDID = "0"
+                    userid = "2",
+                    username = "User",
+                    password = "User",
+                    status = 1,
+                    role = "User",
+                    address = "HCM",
+                    dayofbirth = new DateTime(1995, 1, 1),
+                    createdate = new DateTime(2020, 1, 5),
+                    updatedate = null,
+                    deletedate = null,
+                    cudid = "0"
                 },
                 new User()
                 {
-                    USERID = "1",
-                    USERNAME = "Member",
-                    PASSWORD = "Member",
-                    ACTIVE = 1,
-                    ROLE = "Member",
-                    ADDRESS = "HCM",
-                    DAYOFBIRTH = new DateTime(1995, 1, 1),
-                    CREATEDATE = new DateTime(2020, 1, 5),
-                    UPDATEDATE = null,
-                    DELETEDATE = null,
-                    CUDID = "0"
+                    userid = "1",
+                    username = "Member",
+                    password = "Member",
+                    status = 1,
+                    role = "Member",
+                    address = "HCM",
+                    dayofbirth = new DateTime(1995, 1, 1),
+                    createdate = new DateTime(2020, 1, 5),
+                    updatedate = null,
+                    deletedate = null,
+                    cudid = "0"
                 },
                 new User()
                 {
-                    USERID = "1",
-                    USERNAME = "SuperAdmin",
-                    PASSWORD = "SuperAdmin",
-                    ACTIVE = 1,
-                    ROLE = "SuperAdmin",
-                    ADDRESS = "HCM",
-                    DAYOFBIRTH = new DateTime(1995, 1, 1),
-                    CREATEDATE = new DateTime(2020, 1, 5),
-                    UPDATEDATE = null,
-                    DELETEDATE = null,
-                    CUDID = "0"
+                    userid = "1",
+                    username = "SuperAdmin",
+                    password = "SuperAdmin",
+                    status = 1,
+                    role = "SuperAdmin",
+                    address = "HCM",
+                    dayofbirth = new DateTime(1995, 1, 1),
+                    createdate = new DateTime(2020, 1, 5),
+                    updatedate = null,
+                    deletedate = null,
+                    cudid = "0"
                 }
             };
 
             var mockDbSet = GetQueryableMockDbSet.GetQueryableMockDbSets(data);
             mockDbSet.Setup(d => d.Remove(It.IsAny<User>())).Callback<User>((s) =>
             {
-                var user = data.Find(x => x.USERID == s.USERID);
+                var user = data.Find(x => x.userid == s.userid);
                 data.Remove(user);
             });
 
             mockDbSet.Setup(d => d.Attach(It.IsAny<User>())).Callback<User>((s) =>
             {
-                var itemUpdate = data.Find(x => x.USERID == s.USERID);
+                var itemUpdate = data.Find(x => x.userid == s.userid);
             });
 
             mockContext.Setup(x => x.User).Returns(mockDbSet.Object);

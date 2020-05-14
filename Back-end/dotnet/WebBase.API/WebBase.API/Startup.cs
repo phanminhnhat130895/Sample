@@ -20,6 +20,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using WebBase.Repositories;
+using WebBase.Repositories.DapperCore;
+using WebBase.Security;
 using WebBase.Services.AutoMapper;
 
 namespace WebBase.API
@@ -37,6 +39,10 @@ namespace WebBase.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // jwt handler
+            services.Configure<JwtSettings>(Configuration.GetSection("jwt_settings"));
+            services.AddSingleton<IJwtHandler, JwtHandler>();
 
             // add log
             var logRepository = log4net.LogManager.GetRepository(Assembly.GetEntryAssembly());
@@ -60,6 +66,9 @@ namespace WebBase.API
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            // Dapper get connection string
+            services.AddSingleton<IDapperRepository>(_ => new DapperRepository(Configuration.GetConnectionString("DefaultConnection")));
+
             // add cors
             services.AddCors();
 
@@ -68,16 +77,17 @@ namespace WebBase.API
             .AddJwtBearer(options =>
             {
                 options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                };
+                options.TokenValidationParameters = services.BuildServiceProvider().GetService<IJwtHandler>().Parameters;
+                //options.TokenValidationParameters = new TokenValidationParameters
+                //{
+                //    ValidateIssuer = true,
+                //    ValidateAudience = true,
+                //    ValidateLifetime = true,
+                //    ValidateIssuerSigningKey = true,
+                //    ValidIssuer = Configuration["Jwt:Issuer"],
+                //    ValidAudience = Configuration["Jwt:Issuer"],
+                //    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                //};
             });
 
             // add json option
