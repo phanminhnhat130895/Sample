@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import ShareService from '../services/share.service';
 import { connect } from 'react-redux';
+import styles from '../common/styles';
+import { CommonActions } from '@react-navigation/native';
+import { setAccessToken } from '../state-redux/actions/auth.action';
+import { setMessage } from '../state-redux/actions/message.action';
+import ShareService from '../services/share.service';
+import Message from './Message';
 
 class HomeScreen extends Component {
     constructor(props) {
@@ -13,6 +18,15 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
+        this.props.navigation.dispatch(state => {
+            const routes = state.routes.filter(r => r.name !== 'Login');
+          
+            return CommonActions.reset({
+              ...state,
+              routes,
+              index: routes.length - 1,
+            });
+        });
         if(this.props.role === "Admin") this.setState({ isAdmin: true });
         // ShareService.getDecodeToken()
         //     .then(res => {
@@ -23,20 +37,35 @@ class HomeScreen extends Component {
         //     })
     }
 
+    onGoToUserProfile() {
+        this.props.setMessage(['Error'], 'error');
+        // this.props.navigation.navigate('UserProfile');
+    }
+
+    onLogout(){
+        this.props.setAccessToken(null);
+        ShareService.clearAccessToken();
+        this.props.navigation.navigate('Login');
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>Home Screen</Text>
-                <View style={styles.area}>
+                <Message />
+                <View style={homeStyles.area}>
                     {this.state.isAdmin == true && 
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={homeStyles.button}>
                             <Text style={styles.labelButton}>Admin Area</Text>
                         </TouchableOpacity>
                     }
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={homeStyles.button} onPress={() => this.onGoToUserProfile()}>
                         <Text style={styles.labelButton}>User Area</Text>
                     </TouchableOpacity>
                 </View>
+                <TouchableOpacity style={homeStyles.button} onPress={() => this.onLogout()}>
+                    <Text style={styles.labelButton}>Logout</Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -46,14 +75,13 @@ function mapStateToProps(state) {
     return { token: state.auth.token, role: state.auth.role }
 }
 
-export default connect(mapStateToProps)(HomeScreen);
+function mapActionToProps() {
+    return { setAccessToken, setMessage }
+}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+export default connect(mapStateToProps, mapActionToProps())(HomeScreen);
+
+const homeStyles = StyleSheet.create({
     area: {
         flexDirection: 'row'
     },
@@ -71,9 +99,5 @@ const styles = StyleSheet.create({
         elevation: 8,
         marginLeft: 5,
         marginRight: 5
-    },
-    labelButton: {
-        color: "white",
-        fontSize: 20
     },
 })

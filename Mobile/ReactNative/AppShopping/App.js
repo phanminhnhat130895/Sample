@@ -120,16 +120,10 @@
 // export default App;
 import 'react-native-gesture-handler';
 import React, { Component } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import { Provider } from 'react-redux';
 import store from './src/state-redux/store';
-
-import LoginScreen from './src/components/LoginScreen';
-import HomeScreen from './src/components/HomeScreen';
-import CreateAccountScreen from './src/components/CreateAccountScreen';
-import UserProfileScreen from './src/components/UserProfileScreen';
+import MainScreen from './src/components/MainScreen';
 
 export default class App extends Component {
   constructor(props) {
@@ -137,17 +131,9 @@ export default class App extends Component {
   }
 
   render() {
-    const Stack = createStackNavigator();
     return (
       <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen name="Login" component={ LoginScreen } />
-            <Stack.Screen name="CreateAccount" component={ CreateAccountScreen } />
-            <Stack.Screen name="Home" component={ HomeScreen } />
-            <Stack.Screen name="UserProfile" component={ UserProfileScreen } />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <MainScreen/>
       </Provider>
     )    
   }

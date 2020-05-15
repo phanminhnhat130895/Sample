@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using WebBase.Common;
 using WebBase.Models;
 using WebBase.Security;
@@ -76,6 +77,12 @@ namespace WebBase.API.Controllers
         public List<User> getAllUserDapperParam()
         {
             return _userService.getAllUserWithDapperWithParam();
+        }
+
+        [HttpPost, Route("upload-image")]
+        public int UploadImage(JObject clientData)
+        {
+            return 1;
         }
 
         #region private function

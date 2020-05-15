@@ -2,15 +2,33 @@ import React, { Component } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-export default function Message (props) {
-    if(props.message.length > 0)
-        return (
-            props.message.map((item, key) => (
-                <Text style={props.class == "error" ? styles.errorText : styles.successText} key={key}>{item}</Text>
-            ))
-        )
-    else
-        return null;
+class Message extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            message: props.message,
+            className: props.className
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            message: nextProps.message,
+            className: nextProps.className
+        });
+    }
+
+    render() {
+        if(this.state.message && this.state.message.length > 0)
+            return (
+                this.state.message.map((item, key) => (
+                    <Text style={this.state.className == "error" ? styles.errorText : styles.successText} key={key}>{item}</Text>
+                ))
+            )
+        else
+            return null;
+    }
 }
 
 function mapStateToProps(state) {

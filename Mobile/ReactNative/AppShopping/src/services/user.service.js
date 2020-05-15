@@ -17,4 +17,15 @@ export class UserService {
 
         return result;
     }
+
+    static async onUploadImage(image) {
+        let data = { image }
+        let result = await HttpService.RequestHttp().then(res => {
+            return res.post('user/upload-image', data)
+                    .then(res => res.data)
+                    .catch(err => { throw err })
+        })
+
+        return result;
+    }
 }

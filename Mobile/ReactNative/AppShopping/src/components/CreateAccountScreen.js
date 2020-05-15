@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Share } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { UserService } from '../services/user.service';
 import User from '../models/user';
 import Message from './Message';
+import styles from '../common/styles';
 
 export default class CreateAccountScreen extends Component {
     constructor(props) {
@@ -81,13 +82,13 @@ export default class CreateAccountScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.label}>Create Account</Text>
+                <Text style={createAccountStyles.label}>Create Account</Text>
                 <Message message={this.state.message} class={this.state.class} />
-                <TextInput style={styles.input} placeholder="Username" value={this.state.user.username}
+                <TextInput style={createAccountStyles.input} placeholder="Username" value={this.state.user.username}
                     onChangeText={text => this.onHandleChange(text, 0)} />
-                <TextInput style={styles.input} placeholder="Password" value={this.state.user.password} secureTextEntry={true}
+                <TextInput style={createAccountStyles.input} placeholder="Password" value={this.state.user.password} secureTextEntry={true}
                     onChangeText={text => this.onHandleChange(text, 1)} />
-                <TextInput style={styles.input} placeholder="Confirm Password" value={this.state.confirmPassword} secureTextEntry={true}
+                <TextInput style={createAccountStyles.input} placeholder="Confirm Password" value={this.state.confirmPassword} secureTextEntry={true}
                     onChangeText={text => this.setState({confirmPassword: text})} />
                 <TouchableOpacity style={styles.button} onPress={() => this.onRegister()}>
                     <Text style={styles.labelButton}>Register</Text>
@@ -97,40 +98,24 @@ export default class CreateAccountScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+const createAccountStyles = StyleSheet.create({
     label: {
         fontSize: 30,
         fontWeight: 'bold'
     },
-    button: {
-        backgroundColor: "#0085fa",
-        height: 35,
-        width: 150,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 7,
-        borderRadius: 10,
-        shadowColor: 'black',
-        shadowOffset: { width: 1, height: 15 },
-        shadowOpacity: 0.8,
-        elevation: 8
-    },
-    labelButton: {
-        color: "white",
-        fontSize: 20
-    },
     input: {
-        alignSelf: 'stretch',
         paddingLeft: 5,
         borderBottomColor: '#02b2f7',
         borderBottomWidth: 2,
         fontSize: 18,
-        height: 50,
-        paddingBottom: -5
+        height: 40,
+        paddingBottom: -5,
+        paddingTop: -5,
+        width: '90%',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#dcdde0',
+        backgroundColor: '#fff',
+        marginTop: 5
     }
 })

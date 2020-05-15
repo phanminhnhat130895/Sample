@@ -4,9 +4,15 @@ var jwtDecode = require('jwt-decode');
 const authReducer = (state = {token: '', role: ''}, action) => {
     switch(action.type) {
         case REDUX_SET_ACCESS_TOKEN:
-            state.role = jwtDecode(action.payload.token).ROLE;
-            state.token = action.payload.token; 
-            break;
+            if(action.payload.token){
+                state.role = jwtDecode(action.payload.token).ROLE;
+                state.token = action.payload.token; 
+            }
+            else{
+                state.role = '';
+                state.token = ''; 
+            }
+            return state;
     }
     return state;
 }

@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import styles from '../common/styles';
+import { connect } from 'react-redux';
 import { UserService } from '../services/user.service';
 import ShareService from '../services/share.service';
 import Message from './Message';
 import { sagaSetAccessToken, setAccessToken } from '../state-redux/actions/auth.action';
-import { connect } from 'react-redux';
+import { setMessage, clearMessage } from '../state-redux/actions/message.action';
+import { toggleLoading } from '../state-redux/actions/loading.action';
 
 class LoginScreen extends Component {
     constructor(props) {
@@ -13,8 +16,7 @@ class LoginScreen extends Component {
         this.state = {
             username: '',
             password: '',
-            message: [],
-            class: ''
+            isLoading: true
         }
     }
 
@@ -25,116 +27,120 @@ class LoginScreen extends Component {
                     this.props.setAccessToken(res);
                     this.props.navigation.navigate('Home');
                 }
+                else{
+                    this.setState({ isLoading: false });
+                }
             });
     }
 
-    onLogin(){
-        this.onClearMessage();
+    onLogin() {
+        //this.onClearMessage();
         if(this.state.username && this.state.password) {
+            this.props.toggleLoading();
             UserService.onLogin(this.state.username, this.state.password)
                 .then(res => {
                     if(res === "Unauthenticate") {
-                        this.setState({ class: 'error' });
-                        this.onSetErrorMessage('Username or password incorrect');
+                        this.onSetErrorMessage(['Username or password incorrect']);
+                        this.props.toggleLoading();
                     }
                     else {
                         this.props.setAccessToken(res);
+                        this.props.toggleLoading();
                         ShareService.setAccessToken(res)
                             .then(() => {
                                 this.props.navigation.navigate('Home');
                             })
                             .catch(() => {
-                                this.setState({ class: 'error' });
-                                this.onSetErrorMessage('System error');
+                                this.onSetErrorMessage(['System error']);
                             })
                     }
                 })
                 .catch((err) => {
-                    this.setState({ class: 'error' });
-                    this.onSetErrorMessage('System error');
+                    this.props.toggleLoading();
+                    this.onSetErrorMessage(['System error']);
                 })
         }
         else{
-            this.setState({ class: 'error' });
-            if(!this.state.username) this.onSetErrorMessage('Please input username');
-            if(!this.state.password) this.onSetErrorMessage('Please input password');
+            let message = [];
+            if(!this.state.username) message.push('Please input username');
+            if(!this.state.password) message.push('Please input password');
+            this.onSetErrorMessage(message);
         }
     }
 
     onSetErrorMessage(error) {
-        this.setState(state => {
-            const message = [...state.message, error];
-            return { message, user: state.user, confirmPassword: state.confirmPassword };
-        });
+        this.props.setMessage(error, 'error');
     }
 
     onClearMessage() {
-        this.setState({ message: [], class: '' });
+        this.props.clearMessage();
     }
 
     onGoToCreateAccount(){
-        this.props.navigation.navigate('RegisterUser');
+        this.props.navigation.navigate('CreateAccount');
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.label}>Login</Text>
-                <Message message={this.state.message} class={this.state.class} />
-                <TextInput style={styles.input} placeholder="Username" value={this.state.username} onChangeText={text => this.setState({ username: text })} />
-                <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} value={this.state.password} onChangeText={text => this.setState({ password: text })} />
-                <TouchableOpacity style={styles.button} onPress={() => this.onLogin()}>
-                    <Text style={styles.labelButton}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.onGoToCreateAccount()}>
-                    <Text style={styles.labelCreate}>Create Account</Text>
-                </TouchableOpacity>
+                {
+                    this.state.isLoading == false ?
+                    (
+                        <View style={loginStyles.contentContainer}>
+                            <Text style={loginStyles.label}>Login</Text>
+                            <Text>{this.props.message[0]}</Text>
+                            <Message />
+                            <TextInput style={loginStyles.input} placeholder="Username" value={this.state.username} onChangeText={text => this.setState({ username: text })} />
+                            <TextInput style={loginStyles.input} placeholder="Password" secureTextEntry={true} value={this.state.password} onChangeText={text => this.setState({ password: text })} />
+                            <TouchableOpacity style={styles.button} onPress={() => this.onLogin()}>
+                                <Text style={styles.labelButton}>Login</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.onGoToCreateAccount()}>
+                                <Text style={loginStyles.labelCreate}>Create Account</Text>
+                            </TouchableOpacity>
+                        </View>
+                    )
+                    :
+                    (
+                        <View style={loginStyles.contentContainer}>
+                            <Image source={ require('../images/icon.png') } style={loginStyles.icon} />
+                        </View> 
+                    )
+                }
             </View>
         )
     }
 }
 
 function mapActionToProps() {
-    return { sagaSetAccessToken, setAccessToken }
+    return { sagaSetAccessToken, setAccessToken, setMessage, clearMessage, toggleLoading }
 }
 
-export default connect(null, mapActionToProps())(LoginScreen);
+function mapStateToProps(state) {
+    return { message: state.message.message }
+}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+export default connect(mapStateToProps, mapActionToProps())(LoginScreen);
+
+const loginStyles = StyleSheet.create({
     label: {
         fontSize: 30,
         fontWeight: 'bold'
     },
-    button: {
-        backgroundColor: "#0085fa",
-        height: 35,
-        width: 150,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 7,
-        borderRadius: 10,
-        shadowColor: 'black',
-        shadowOffset: { width: 1, height: 15 },
-        shadowOpacity: 0.8,
-        elevation: 8
-    },
-    labelButton: {
-        color: "white",
-        fontSize: 20
-    },
     input: {
-        alignSelf: 'stretch',
         paddingLeft: 5,
         borderBottomColor: '#02b2f7',
         borderBottomWidth: 2,
         fontSize: 18,
-        height: 50,
-        paddingBottom: -5
+        height: 40,
+        paddingBottom: -5,
+        paddingTop: -5,
+        width: '90%',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#dcdde0',
+        backgroundColor: '#fff',
+        marginTop: 5
     },
     labelCreate: {
         color: '#0085fa',
@@ -142,6 +148,17 @@ const styles = StyleSheet.create({
         textDecorationColor: '#0085fa',
         textDecorationStyle: 'solid',
         fontSize: 18,
-        marginTop: 5
+        marginTop: 10
+    },
+    contentContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+    },
+    icon: {
+        width: 50,
+        height: 50,
+        borderRadius: 25
     }
 })
